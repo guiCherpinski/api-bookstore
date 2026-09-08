@@ -1,9 +1,14 @@
 package br.com.ctw.bookstore.controller;
 
+import br.com.ctw.bookstore.dto.BookCreate;
 import br.com.ctw.bookstore.dto.BookResponse;
 import br.com.ctw.bookstore.entity.BookEntity;
 import br.com.ctw.bookstore.service.BookService;
+
+import java.awt.print.Book;
 import java.util.*;
+
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +35,11 @@ public class BookController {
     @GetMapping("/{title}")
     public ResponseEntity<BookResponse> findByTitle(@PathVariable String title){
         return ResponseEntity.ok(service.findByTitle(title));
+    }
+
+    @PostMapping()
+    public ResponseEntity<BookResponse> insertBook(@RequestBody BookCreate create){
+        return ResponseEntity.ok(service.insertBook(create));
     }
 
 

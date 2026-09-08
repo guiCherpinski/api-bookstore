@@ -1,5 +1,6 @@
 package br.com.ctw.bookstore.service;
 
+import br.com.ctw.bookstore.dto.BookCreate;
 import br.com.ctw.bookstore.dto.BookResponse;
 import br.com.ctw.bookstore.entity.BookEntity;
 import br.com.ctw.bookstore.mapper.BookMapper;
@@ -32,6 +33,14 @@ public class BookService {
 
     public BookResponse findByTitle(String title){
         BookEntity entity = repository.findByTitle(title);
+        BookResponse response = mapper.toResponse(entity);
+        return response;
+    }
+
+    public BookResponse insertBook(BookCreate create){
+        BookEntity entity = mapper.toEntity(create);
+        repository.save(entity);
+
         BookResponse response = mapper.toResponse(entity);
         return response;
     }
