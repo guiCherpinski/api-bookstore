@@ -38,4 +38,8 @@ public class BookEntity {
             inverseJoinColumns = @JoinColumn(name = "author_id")
     )
     private Set<AuthorEntity> authors = new HashSet<>();
+
+
+    @OneToOne(mappedBy = "review",cascade = CascadeType.ALL)
+    private ReviewEntity review;
 }

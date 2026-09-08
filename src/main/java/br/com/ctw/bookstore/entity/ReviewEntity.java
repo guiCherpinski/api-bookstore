@@ -24,4 +24,8 @@ public class ReviewEntity {
             unique = true
     )
     private String comment;
+
+    @OneToOne
+    @JoinColumn(name = "book_id")
+    private BookEntity book;
 }
