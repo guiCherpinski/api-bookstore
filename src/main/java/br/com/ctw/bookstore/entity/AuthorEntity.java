@@ -24,4 +24,7 @@ public class AuthorEntity {
             unique = true
     )
     private String name;
+
+    @ManyToMany(mappedBy = "authors",fetch = FetchType.LAZY)
+    private Set<BookEntity> books = new HashSet<>();
 }
