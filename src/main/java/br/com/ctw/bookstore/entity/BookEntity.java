@@ -40,6 +40,6 @@ public class BookEntity {
     private Set<AuthorEntity> authors = new HashSet<>();
 
 
-    @OneToOne(mappedBy = "review",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "book",cascade = CascadeType.ALL)
     private ReviewEntity review;
 }
