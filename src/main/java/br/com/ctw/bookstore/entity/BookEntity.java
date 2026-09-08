@@ -25,4 +25,9 @@ public class BookEntity {
             unique = true
     )
     private String title;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "publisher_id")
+    private PublisherEntity publisher;
 }

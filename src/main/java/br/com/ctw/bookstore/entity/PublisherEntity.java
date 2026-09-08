@@ -25,4 +25,7 @@ public class PublisherEntity {
             name = "name"
     )
     private String name;
+
+    @OneToMany(mappedBy = "publisher" , fetch = FetchType.LAZY)
+    private Set<BookEntity> books = new HashSet<>();
 }
