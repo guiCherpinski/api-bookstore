@@ -23,4 +23,20 @@ public class BookService {
         List<BookResponse> response = mapper.toResponseList(entitys);
         return response;
     }
+
+    public BookResponse findById(UUID id) {
+        BookEntity entity = repository.findById(id).orElseThrow(() -> new RuntimeException("id não encontrado"));
+        BookResponse response = mapper.toResponse(entity);
+        return response;
+    }
+
+    public BookResponse findByTitle(String title){
+        BookEntity entity = repository.findByTitle(title);
+        BookResponse response = mapper.toResponse(entity);
+        return response;
+    }
+
+    public void deleteById(UUID id){
+        repository.deleteById(id);
+    }
 }
