@@ -2,6 +2,7 @@ package br.com.ctw.bookstore.service;
 
 import br.com.ctw.bookstore.dto.BookCreate;
 import br.com.ctw.bookstore.dto.BookResponse;
+import br.com.ctw.bookstore.dto.BookUpdate;
 import br.com.ctw.bookstore.entity.BookEntity;
 import br.com.ctw.bookstore.mapper.BookMapper;
 import br.com.ctw.bookstore.repository.BookRepository;
@@ -42,6 +43,15 @@ public class BookService {
         repository.save(entity);
 
         BookResponse response = mapper.toResponse(entity);
+        return response;
+    }
+
+    public BookResponse updateBook(BookUpdate update, UUID id){
+        BookEntity entity = repository.findById(id).orElseThrow(() -> new RuntimeException("erro - id não encontrado"));
+
+        BookEntity entityFixed = mapper.toUpdate(update,entity);
+
+        BookResponse response = mapper.toResponse(entityFixed);
         return response;
     }
 

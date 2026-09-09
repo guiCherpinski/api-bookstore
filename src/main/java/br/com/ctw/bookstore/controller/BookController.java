@@ -2,6 +2,7 @@ package br.com.ctw.bookstore.controller;
 
 import br.com.ctw.bookstore.dto.BookCreate;
 import br.com.ctw.bookstore.dto.BookResponse;
+import br.com.ctw.bookstore.dto.BookUpdate;
 import br.com.ctw.bookstore.entity.BookEntity;
 import br.com.ctw.bookstore.service.BookService;
 
@@ -40,6 +41,11 @@ public class BookController {
     @PostMapping()
     public ResponseEntity<BookResponse> insertBook(@RequestBody BookCreate create){
         return ResponseEntity.ok(service.insertBook(create));
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<BookResponse> updateBook(@RequestBody BookUpdate update, @PathVariable UUID id){
+        return ResponseEntity.ok(service.updateBook(update,id));
     }
 
 
